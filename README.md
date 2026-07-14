@@ -1,32 +1,33 @@
-# 🎓 Student Management System
+# 🎓 Student Management System (SQL)
 
-A complete SQL-based Student Management System developed using **MySQL**. This project demonstrates relational database design, normalization, SQL querying, and database programming concepts such as Views, Stored Procedures, Triggers, and Indexes.
+A SQL-based Student Management System developed using MySQL to manage students, courses, enrollments, attendance, and grades. This project demonstrates fundamental SQL concepts including database creation, CRUD operations, joins, grouping, filtering, sorting, and aggregate functions.
+
+---
+
+## 👩‍💻 Developed By
+
+**Rachna Telang**
 
 ---
 
 ## 📌 Features
 
-- Student Information Management
-- Department Management
-- Faculty Management
-- Course Management
-- Student Enrollment
-- Attendance Tracking
-- Marks Management
-- Fee Management
-- Reports using SQL Queries
-- Database Views
-- Stored Procedures
-- Database Triggers
-- Indexing for Performance
+- Create and manage a Student Management System database
+- Store student details
+- Manage courses
+- Track student enrollments
+- Record attendance
+- Store student grades
+- Perform CRUD (Create, Read, Update, Delete) operations
+- Execute SQL queries using JOIN, GROUP BY, ORDER BY, WHERE, HAVING, and Aggregate Functions
 
 ---
 
-## 🛠 Technologies Used
+## 🛠️ Technologies Used
 
-- MySQL 8.x
-- MySQL Workbench
-- VS Code
+- MySQL
+- SQL
+- Visual Studio Code
 - Git
 - GitHub
 
@@ -35,157 +36,175 @@ A complete SQL-based Student Management System developed using **MySQL**. This p
 ## 📂 Project Structure
 
 ```
-Student-Management-System
+Student_Management_System/
 │
-├── database/
 ├── data/
+│   ├── insert_student.sql
+│   ├── insert_course.sql
+│   ├── insert_enrollments.sql
+│   ├── insert_attendance.sql
+│   └── insert_grades.sql
+│
 ├── queries/
-├── diagrams/
+│   ├── average_sql.sql
+│   ├── count_sql.sql
+│   ├── delete_sql.sql
+│   ├── group_by.sql
+│   ├── join_sql.sql
+│   ├── list_students.sql
+│   ├── order_by.sql
+│   ├── update_sql.sql
+│   └── where_sql.sql
+│
+├── schema/
+│   └── schema.sql
+│
 ├── screenshots/
-├── docs/
+│
 └── README.md
 ```
 
 ---
 
-## 🗃 Database Tables
+## 🗄️ Database Tables
 
 - Students
-- Departments
-- Faculty
 - Courses
 - Enrollments
 - Attendance
-- Marks
-- Fees
+- Grades
 
 ---
 
-## 🔗 Entity Relationships
+## 📋 SQL Concepts Covered
 
-- One Department has many Students.
-- One Department has many Faculty members.
-- One Department offers many Courses.
-- A Student can enroll in multiple Courses.
-- Each Student has Attendance records.
-- Each Student has Marks.
-- Each Student has Fee records.
-
----
-
-## 📚 SQL Concepts Covered
-
-- DDL
-  - CREATE
-  - ALTER
-  - DROP
-  - TRUNCATE
-
-- DML
-  - INSERT
-  - UPDATE
-  - DELETE
-
-- DQL
-  - SELECT
-
-- TCL
-  - COMMIT
-  - ROLLBACK
-
-- DCL
-  - GRANT
-  - REVOKE
-
-- Joins
-  - INNER JOIN
-  - LEFT JOIN
-  - RIGHT JOIN
-
-- Aggregate Functions
-
+- CREATE DATABASE
+- CREATE TABLE
+- PRIMARY KEY
+- FOREIGN KEY
+- INSERT
+- SELECT
+- UPDATE
+- DELETE
+- WHERE
+- ORDER BY
 - GROUP BY
-
 - HAVING
-
-- Subqueries
-
-- Views
-
-- Stored Procedures
-
-- Triggers
-
-- Indexes
+- COUNT()
+- AVG()
+- JOIN
+- LIKE
+- IN
 
 ---
 
-## 🚀 Getting Started
+## 📌 Sample Queries
 
-### Clone the Repository
+### List all students
 
-```bash
-git clone https://github.com/your-username/Student-Management-System.git
+```sql
+SELECT * FROM students;
 ```
 
-### Open MySQL Workbench
+### Count students enrolled in each course
 
-Run the SQL files in the following order:
-
-```
-01_create_database.sql
-
-02_create_tables.sql
-
-03_constraints.sql
-
-04_indexes.sql
-
-05_views.sql
-
-06_procedures.sql
-
-07_triggers.sql
+```sql
+SELECT course_id, COUNT(student_id)
+FROM enrollments
+GROUP BY course_id;
 ```
 
-Next, execute all files inside the `data/` folder to populate the database with sample records.
+### Students with Grade A or A+
 
-Finally, explore the SQL examples in the `queries/` folder.
+```sql
+SELECT s.id, s.name, g.grade
+FROM students s
+JOIN grades g
+ON s.id = g.student_id
+WHERE g.grade IN ('A','A+');
+```
+
+### Update Student City
+
+```sql
+UPDATE students
+SET city='Chennai'
+WHERE id=3;
+```
+
+### Students Enrolled in SQL Crash Course
+
+```sql
+SELECT s.id,s.name,s.email,e.course_id,g.grade
+FROM students s
+JOIN enrollments e
+ON s.id=e.student_id
+JOIN grades g
+ON s.id=g.student_id
+AND e.course_id=g.course_id
+WHERE e.course_id=1002;
+```
 
 ---
 
 ## 📸 Screenshots
 
-- ER Diagram
-- Database Schema
-- Table Structures
-- Query Results
-- Stored Procedure Output
-- Trigger Demonstration
+Add your screenshots inside the **screenshots** folder and display them like this.
+
+### Students Table
+
+![Students](screenshots/students_table.png)
+
+### Courses Table
+
+![Courses](screenshots/courses_table.png)
+
+### Join Query
+
+![Join](screenshots/join_query.png)
+
+### Update Query
+
+![Update](screenshots/update_query.png)
+
+### Output
+
+![Output](screenshots/output.png)
 
 ---
 
-## 🎯 Learning Outcomes
+## 🚀 Learning Outcomes
 
-- Relational Database Design
-- Database Normalization
-- SQL Query Writing
-- Database Optimization
-- Data Integrity using Constraints
-- Working with Stored Procedures
-- Trigger Implementation
-- Real-world Database Development
+Through this project, I learned:
 
----
-
-## 👨‍💻 Author
-
-**Rachna Telang**
-
-GitHub: https://github.com/your-github
+- Database Design
+- SQL CRUD Operations
+- Table Relationships
+- Joins
+- Aggregate Functions
+- Data Filtering
+- Query Optimization Basics
+- Git & GitHub Project Management
 
 ---
 
-## 📄 License
+## ⭐ Future Improvements
 
-This project is licensed under the MIT License.
+- Stored Procedures
+- Views
+- Triggers
+- Indexing
+- User Authentication Integration
+- Dashboard using Power BI
+
+---
+
+## 📜 License
+
+This project is created for educational and portfolio purposes.
+
+---
+
+## ⭐ If you like this project
+
+Please consider giving it a ⭐ on GitHub.
