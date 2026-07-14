@@ -1,0 +1,4 @@
+-- Find the average id across all enrollments
+
+SELECT AVG(id) average_id
+FROM enrollments;

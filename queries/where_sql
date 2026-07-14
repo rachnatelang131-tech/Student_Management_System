@@ -1,0 +1,4 @@
+-- Show students whose name starts with 'P' or 'R'
+SELECT name
+FROM students
+WHERE name LIKE 'P%' OR name LIKE 'R%';

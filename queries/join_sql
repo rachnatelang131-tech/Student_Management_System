@@ -1,0 +1,15 @@
+-- Display all students enrolled in the SQL Crash Course (course_id = 1002) along with their grade
+
+SELECT
+    s.id,
+    s.name,
+    s.email,
+    e.course_id,
+    g.grade
+FROM students s
+JOIN enrollments e
+    ON s.id = e.student_id
+JOIN grades g
+    ON s.id = g.student_id
+    AND e.course_id = g.course_id
+WHERE e.course_id = 1002;

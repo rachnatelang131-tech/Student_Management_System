@@ -1,0 +1,13 @@
+-- Update student's city to "Chennai" using ID
+
+UPDATE students
+SET city = 'Chennai'
+WHERE id = 3;
+
+-- Verify the update
+
+SELECT *
+FROM students
+WHERE id = 3;
+
+
